@@ -21,8 +21,41 @@ Task createTask();
 
 int main(int argc, char *argv[])
 {
+    /*
+    Task *taskList;
+    int n, i;
+
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
+    printf("Entered number of elements: %d", n);
+
+    taskList = (Task*)malloc(n * sizeof(Task));
+
+    if (taskList == NULL) 
+    {
+        printf("Memory not allocated.\n");
+        exit(0);
+    }
+    else 
+    {
+        printf("Memory successfully allocated using malloc.\n");
+
+        for (i = 0; i < n; i++) 
+            taskList[i] = createTask();
+
+        printf("The elements in the array are: ");
+        for (i = 0; i < n; i++) 
+            printTaskDetails(taskList[i]);
+    }
+
+    free(taskList);
+    */
+
     Task myTask = createTask();
     printTaskDetails(myTask);
+
+    Task otherTask = createTask();
+    printTaskDetails(otherTask);
 
     return 0;
 }
@@ -39,15 +72,13 @@ void welcomeMessage()
 
 void printTaskDetails(Task task)
 {
-    //printf("Task ID: %d\n", task.id);
+    printf("Task ID: %d\n", task.id);
     printf("Task Name: %s\n", task.name);
     printf("Description: %s\n", task.description);
     printf("Due Date: %s\n", task.dueDate);
-    /*
     printf("Priority: %d\n", task.priority);
     printf("Completed: %d\n", task.completed);
     printf("\n");
-    */
 }
 
 // Function that takes user input and creates a new task to add to the list
@@ -64,7 +95,8 @@ Task createTask()
     {
         printf("Failed to read input stream");
     }
-    else {
+    else 
+    {
         name[strcspn(name, "\n")] = '\0';
         strcpy(newTask.name, name);
     }
@@ -84,20 +116,25 @@ Task createTask()
         dueDate[strcspn(dueDate, "\n")] = '\0';
         strcpy(newTask.dueDate, dueDate);
     }
-    /*
+
     printf("Enter the task ID: ");
     scanf("%d", &id);
+    getchar();
     newTask.id = id;
+    
     printf("Enter the task priority: ");
     scanf("%d", &priority);
+    getchar();
     newTask.priority = priority;
+    
     printf("Has the task been completed? (0 for no 1 for yes): ");
     scanf("%d", &b);
+    getchar();
     if (b)
         completed = true;
     else
         completed = false;
     newTask.completed = completed;
-    */
+    
     return newTask;
 }
